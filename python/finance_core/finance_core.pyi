@@ -1,4 +1,17 @@
-__all__ = ["sum_as_string", "calculate_return"]
+from typing import Self
+
+__all__ = ["sum_as_string", "TimeSeries"]
+
+
+class TimeSeries:
+
+    def __init__(self, index: list[int], values: list[float]) -> None:
+        """Create a new timeseries."""
+
+    def __new__(self, index: list[int], values: list[float]) -> Self: ...
+
+    def sma(self, windows_size: int) -> list[float]:
+        """Calculate simple moving average."""
 
 
 def sum_as_string(a: int, b: int) -> str:
@@ -10,15 +23,4 @@ def sum_as_string(a: int, b: int) -> str:
 
     Returns:
         Sum of a and b.
-    """
-
-def calculate_return(initial_investment: float, final_value: float) -> float:
-    """Calcualte the return of an investment in percentage.
-
-    Args:
-        initial_investment: Initial investment.
-        final_value: Final value.
-
-    Returns:
-        Percentage return.
     """

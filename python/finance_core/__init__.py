@@ -1,9 +1,9 @@
 from ._finance_core import (
     sum_as_string,
-    calculate_return,
+    TimeSeries,
 )
 
 __all__ = [
     "sum_as_string",
-    "calculate_return"
+    "TimeSeries"
 ]
