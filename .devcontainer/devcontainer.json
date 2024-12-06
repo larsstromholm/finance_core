@@ -12,7 +12,8 @@
             "settings": {
                 "editor.formatOnSave": true,
                 "files.autoSave": "onFocusChange",
-                "autoDocstring.docstringFormat": "google"
+                "autoDocstring.docstringFormat": "google",
+                "python.analysis.autoFormatStrings": true
             }
         }
     },

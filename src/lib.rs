@@ -1,8 +1,10 @@
 use pyo3::prelude::*;
 
-mod sma;
+mod traits;
+pub use crate::traits::*;
 
-use sma::TimeSeries;
+mod indicators;
+pub use crate::indicators::{Maximum, Minimum, SimpleMovingAverage};
 
 /// Formats the sum of two numbers as string.
 #[pyfunction]
@@ -13,7 +15,9 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 /// A Python module implemented in Rust.
 #[pymodule]
 fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_class::<TimeSeries>()?;
+    m.add_class::<Maximum>()?;
+    m.add_class::<Minimum>()?;
+    m.add_class::<SimpleMovingAverage>()?;
     m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
     Ok(())
 }
