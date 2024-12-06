@@ -1,9 +1,13 @@
 from ._finance_core import (
     sum_as_string,
-    TimeSeries,
+    Maximum,
+    Minimum,
+    SimpleMovingAverage
 )
 
 __all__ = [
     "sum_as_string",
-    "TimeSeries"
+    "Maximum",
+    "Minimum",
+    "SimpleMovingAverage"
 ]
