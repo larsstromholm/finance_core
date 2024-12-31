@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{exceptions::PyValueError, prelude::*};
 
 use crate::traits::{Next, Period, Reset};
 
@@ -14,13 +14,16 @@ pub struct SimpleMovingAverage {
 #[pymethods]
 impl SimpleMovingAverage {
     #[new]
-    pub fn new(period: usize) -> Self {
-        Self {
-            period,
-            index: 0,
-            count: 0,
-            sum: 0.0,
-            deque: vec![0.0; period],
+    pub fn new(period: usize) -> PyResult<Self> {
+        match period {
+            0 => Err(PyValueError::new_err("Period cannot be 0.")),
+            _ => Ok(Self {
+                period,
+                index: 0,
+                count: 0,
+                sum: 0.0,
+                deque: vec![0.0; period],
+            })
         }
     }
 
@@ -73,5 +76,40 @@ impl Reset for SimpleMovingAverage {
         for i in 0..self.period {
             self.deque[i] = 0.0;
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+
+    use crate::SimpleMovingAverage;
+
+    #[test]
+    fn test_new() {
+        assert!(SimpleMovingAverage::new(0).is_err());
+        assert!(SimpleMovingAverage::new(3).is_ok());
+    }
+
+    #[test]
+    fn test_next() {
+        let mut sma = SimpleMovingAverage::new(3).unwrap();
+
+        assert_eq!(sma.next(1.0), 1.0);
+        assert_eq!(sma.next(2.0), 1.5);
+        assert_eq!(sma.next(3.0), 2.0);
+        assert_eq!(sma.next(4.0), 3.0);
+    }
+
+    #[test]
+    fn test_reset() {
+        let mut sma = SimpleMovingAverage::new(3).unwrap();
+
+        assert_eq!(sma.next(1.0), 1.0);
+
+        sma.reset();
+        assert_eq!(sma.next(2.0), 2.0);
+
+        sma.reset();
+        assert_eq!(sma.next(3.0), 3.0);
     }
 }

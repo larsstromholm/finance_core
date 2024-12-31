@@ -1,13 +1,15 @@
 from ._finance_core import (
-    sum_as_string,
+    ExponentialMovingAverage,
     Maximum,
     Minimum,
-    SimpleMovingAverage
+    MovingAverageConvergenceDivergence,
+    SimpleMovingAverage,
 )
 
 __all__ = [
-    "sum_as_string",
+    "ExponentialMovingAverage",
     "Maximum",
     "Minimum",
-    "SimpleMovingAverage"
+    "MovingAverageConvergenceDivergence",
+    "SimpleMovingAverage",
 ]
