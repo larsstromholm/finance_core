@@ -10,8 +10,9 @@
                 "njpwerner.autodocstring"
             ],
             "settings": {
-                "editor.formatOnSave": true,
                 "files.autoSave": "onFocusChange",
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "charliermarsh.ruff",
                 "autoDocstring.docstringFormat": "google",
                 "python.analysis.autoFormatStrings": true
             }

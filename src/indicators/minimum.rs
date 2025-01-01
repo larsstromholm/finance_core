@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{exceptions::PyValueError, prelude::*};
 
 use crate::traits::{Next, Period, Reset};
 
@@ -13,12 +13,15 @@ pub struct Minimum {
 #[pymethods]
 impl Minimum {
     #[new]
-    pub fn new(period: usize) -> Self {
-        Self {
-            period,
-            min_index: 0,
-            cur_index: 0,
-            deque: vec![f64::INFINITY; period],
+    pub fn new(period: usize) -> PyResult<Self> {
+        match period {
+            0 => Err(PyValueError::new_err("Period cannot be 0.")),
+            _ => Ok(Self {
+                period,
+                min_index: 0,
+                cur_index: 0,
+                deque: vec![f64::INFINITY; period],
+           })
         }
     }
 
@@ -34,7 +37,7 @@ impl Minimum {
         Reset::reset(self)
     }
 
-    pub fn find_min_index(&self) -> usize {
+    fn find_min_index(&self) -> usize {
         let mut min = f64::INFINITY;
         let mut index: usize = 0;
 
@@ -80,7 +83,7 @@ impl Next<f64> for Minimum {
 impl Reset for Minimum {
     fn reset(&mut self) {
         for i in 0..self.period {
-            self.deque[i] = f64::NEG_INFINITY;
+            self.deque[i] = f64::INFINITY;
         }
     }
 }

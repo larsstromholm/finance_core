@@ -9,32 +9,40 @@ pip install finance_core
 
 ## Example usage
 ```python
-from finance_core import Maximum, Minimum, SimpleMovingAverage
+import finance_core as fc
 
 
-three_day_max = Maximum(3)
+max_three_days = fc.Maximum(3)
 
-print(three_day_max.next(1)) # >> 1
-print(three_day_max.next(4)) # >> 4
-print(three_day_max.next(2)) # >> 4
-print(three_day_max.next(5)) # >> 5
-
-
-three_day_min = Minimum(3)
-
-print(three_day_min.next(1)) # >> 1
-print(three_day_min.next(4)) # >> 1
-print(three_day_min.next(2)) # >> 1
-print(three_day_min.next(5)) # >> 2
+print(max_three_days.next(1)) # >> 1
+print(max_three_days.next(4)) # >> 4
+print(max_three_days.next(2)) # >> 4
+print(max_three_days.next(5)) # >> 5
 
 
-sma_three_day = SimpleMovingAverage(3)
+min_three_days = fc.Minimum(3)
 
-print(sma_three_day.next(1)) # >> 1
-print(sma_three_day.next(4)) # >> 2.5
-print(sma_three_day.next(2)) # >> 2.33
-print(sma_three_day.next(5)) # >> 3.66
+print(min_three_days.next(1)) # >> 1
+print(min_three_days.next(4)) # >> 1
+print(min_three_days.next(2)) # >> 1
+print(min_three_days.next(5)) # >> 2
+
+
+sma_three_days = fc.SimpleMovingAverage(3)
+
+print(sma_three_days.next(1)) # >> 1
+print(sma_three_days.next(4)) # >> 2.5
+print(sma_three_days.next(2)) # >> 2.33
+print(sma_three_days.next(5)) # >> 3.66
 ```
+
+## Indicators
+
+- Exponential moving average (EMA)
+- Maximum
+- Minimum
+- Moving average convergence/divergence (MACD)
+- Simple moving average (SMA)
 
 ## Contribute
 

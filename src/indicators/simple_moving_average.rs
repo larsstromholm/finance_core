@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{exceptions::PyValueError, prelude::*};
 
 use crate::traits::{Next, Period, Reset};
 
@@ -14,13 +14,16 @@ pub struct SimpleMovingAverage {
 #[pymethods]
 impl SimpleMovingAverage {
     #[new]
-    pub fn new(period: usize) -> Self {
-        Self {
-            period,
-            index: 0,
-            count: 0,
-            sum: 0.0,
-            deque: vec![0.0; period],
+    pub fn new(period: usize) -> PyResult<Self> {
+        match period {
+            0 => Err(PyValueError::new_err("Period cannot be 0.")),
+            _ => Ok(Self {
+                period,
+                index: 0,
+                count: 0,
+                sum: 0.0,
+                deque: vec![0.0; period],
+            })
         }
     }
 

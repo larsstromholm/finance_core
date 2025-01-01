@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{exceptions::PyValueError, prelude::*};
 
 use crate::traits::{Next, Period, Reset};
 
@@ -13,12 +13,15 @@ pub struct Maximum {
 #[pymethods]
 impl Maximum {
     #[new]
-    pub fn new(period: usize) -> Self {
-        Self {
-            period,
-            max_index: 0,
-            cur_index: 0,
-            deque: vec![f64::NEG_INFINITY; period],
+    pub fn new(period: usize) -> PyResult<Self> {
+        match period {
+            0 => Err(PyValueError::new_err("Period cannot be 0.")),
+            _ => Ok(Self {
+                period,
+                max_index: 0,
+                cur_index: 0,
+                deque: vec![f64::NEG_INFINITY; period],
+            })
         }
     }
 
@@ -34,7 +37,7 @@ impl Maximum {
         Reset::reset(self)
     }
 
-    pub fn find_max_index(&self) -> usize {
+    fn find_max_index(&self) -> usize {
         let mut max = f64::NEG_INFINITY;
         let mut index: usize = 0;
 
