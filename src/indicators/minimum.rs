@@ -87,37 +87,3 @@ impl Reset for Minimum {
         }
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use crate::Minimum;
-
-    #[test]
-    fn test_new() {
-        assert!(Minimum::new(0).is_err());
-        assert!(Minimum::new(3).is_ok());
-    }
-
-    #[test]
-    fn test_next() {
-        let mut min = Minimum::new(3).unwrap();
-
-        assert_eq!(min.next(4.0), 4.0);
-        assert_eq!(min.next(3.0), 3.0);
-        assert_eq!(min.next(2.0), 2.0);
-        assert_eq!(min.next(5.0), 2.0);
-    }
-
-    #[test]
-    fn test_reset() {
-        let mut min = Minimum::new(2).unwrap();
-
-        assert_eq!(min.next(3.0), 3.0);
-
-        min.reset();
-        assert_eq!(min.next(4.0), 4.0);
-
-        min.reset();
-        assert_eq!(min.next(5.0), 5.0);
-    }
-}

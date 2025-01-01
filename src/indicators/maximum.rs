@@ -87,37 +87,3 @@ impl Reset for Maximum {
         }
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use crate::Maximum;
-
-    #[test]
-    fn test_new() {
-        assert!(Maximum::new(0).is_err());
-        assert!(Maximum::new(3).is_ok());
-    }
-
-    #[test]
-    fn test_next() {
-        let mut max = Maximum::new(3).unwrap();
-
-        assert_eq!(max.next(5.0), 5.0);
-        assert_eq!(max.next(2.0), 5.0);
-        assert_eq!(max.next(3.0), 5.0);
-        assert_eq!(max.next(4.0), 4.0);
-    }
-
-    #[test]
-    fn test_reset() {
-        let mut max = Maximum::new(2).unwrap();
-
-        assert_eq!(max.next(5.0), 5.0);
-
-        max.reset();
-        assert_eq!(max.next(4.0), 4.0);
-
-        max.reset();
-        assert_eq!(max.next(3.0), 3.0);
-    }
-}

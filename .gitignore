@@ -29,6 +29,7 @@ Cargo.lock
 
 # Cache
 __pycache__
+.pytest_cache
 
 # Python executable
 python/finance_core/*.so
