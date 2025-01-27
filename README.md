@@ -43,6 +43,11 @@ print(sma_three_days.next(5)) # >> 3.66
 - Minimum
 - Moving average convergence/divergence (MACD)
 - Simple moving average (SMA)
+- True range
+
+## Data classes
+
+- Bar (open, high, low, close, volume)
 
 ## Contribute
 

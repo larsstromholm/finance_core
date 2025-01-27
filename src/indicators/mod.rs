@@ -12,3 +12,6 @@ pub use self::moving_average_convergence_divergence::MovingAverageConvergenceDiv
 
 mod simple_moving_average;
 pub use self::simple_moving_average::SimpleMovingAverage;
+
+mod true_range;
+pub use self::true_range::TrueRange;
