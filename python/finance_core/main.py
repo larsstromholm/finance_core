@@ -24,7 +24,7 @@ print(sma.next(4))
 print(sma.next(2))
 print(sma.next(5))
 
-macd = fc.MovingAverageConvergenceDivergence(26, 12)
+macd = fc.MovingAverageConvergenceDivergence(26, 12, 9)
 
 print(macd.next(1))
 print(macd.next(4))
