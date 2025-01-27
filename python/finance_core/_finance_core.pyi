@@ -46,7 +46,7 @@ class Minimum:
         """Reset the current calculations."""
 
 class MovingAverageConvergenceDivergence:
-    def __init__(self, long_period: int, short_period: int) -> None:
+    def __init__(self, long_period: int, short_period: int, signal_period: int) -> None:
         """Moving average convergence divergence."""
 
     def next(self, input: float) -> tuple[float, float, float]:
