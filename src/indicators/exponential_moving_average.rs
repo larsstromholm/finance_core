@@ -28,20 +28,20 @@ impl ExponentialMovingAverage {
     }
 
     pub fn period(&mut self) -> usize {
-        Period::period(self)
+        Period::period_rs(self)
     }
 
     pub fn next(&mut self, input: f64) -> f64 {
-        Next::next(self, input)
+        Next::next_rs(self, input)
     }
 
     pub fn reset(&mut self) {
-        Reset::reset(self)
+        Reset::reset_rs(self)
     }
 }
 
 impl Period for ExponentialMovingAverage {
-    fn period(&self) -> usize {
+    fn period_rs(&self) -> usize {
         self.period
     }
 }
@@ -49,7 +49,7 @@ impl Period for ExponentialMovingAverage {
 impl Next<f64> for ExponentialMovingAverage {
     type Output = f64;
 
-    fn next(&mut self, input: f64) -> Self::Output {
+    fn next_rs(&mut self, input: f64) -> Self::Output {
         if self.is_new {
             self.is_new = false;
             self.current = input;
@@ -62,7 +62,7 @@ impl Next<f64> for ExponentialMovingAverage {
 }
 
 impl Reset for ExponentialMovingAverage {
-    fn reset(&mut self) {
+    fn reset_rs(&mut self) {
         self.current = 0.0;
         self.is_new = true;
     }

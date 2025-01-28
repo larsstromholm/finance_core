@@ -28,20 +28,20 @@ impl SimpleMovingAverage {
     }
 
     pub fn period(&mut self) -> usize {
-        Period::period(self)
+        Period::period_rs(self)
     }
 
     pub fn next(&mut self, input: f64) -> f64 {
-        Next::next(self, input)
+        Next::next_rs(self, input)
     }
 
     pub fn reset(&mut self) {
-        Reset::reset(self)
+        Reset::reset_rs(self)
     }
 }
 
 impl Period for SimpleMovingAverage {
-    fn period(&self) -> usize {
+    fn period_rs(&self) -> usize {
         self.period
     }
 }
@@ -49,7 +49,7 @@ impl Period for SimpleMovingAverage {
 impl Next<f64> for SimpleMovingAverage {
     type Output = f64;
 
-    fn next(&mut self, input: f64) -> Self::Output {
+    fn next_rs(&mut self, input: f64) -> Self::Output {
         let old_value = self.deque[self.index];
         self.deque[self.index] = input;
 
@@ -69,7 +69,7 @@ impl Next<f64> for SimpleMovingAverage {
 }
 
 impl Reset for SimpleMovingAverage {
-    fn reset(&mut self) {
+    fn reset_rs(&mut self) {
         self.index = 0;
         self.count = 0;
         self.sum = 0.0;

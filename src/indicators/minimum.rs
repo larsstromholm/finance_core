@@ -26,15 +26,15 @@ impl Minimum {
     }
 
     pub fn period(&mut self) -> usize {
-        Period::period(self)
+        Period::period_rs(self)
     }
 
     pub fn next(&mut self, input: f64) -> f64 {
-        Next::next(self, input)
+        Next::next_rs(self, input)
     }
 
     pub fn reset(&mut self) {
-        Reset::reset(self)
+        Reset::reset_rs(self)
     }
 
     fn find_min_index(&self) -> usize {
@@ -53,7 +53,7 @@ impl Minimum {
 }
 
 impl Period for Minimum {
-    fn period(&self) -> usize {
+    fn period_rs(&self) -> usize {
         self.period
     }
 }
@@ -61,7 +61,7 @@ impl Period for Minimum {
 impl Next<f64> for Minimum {
     type Output = f64;
 
-    fn next(&mut self, input: f64) -> Self::Output {
+    fn next_rs(&mut self, input: f64) -> Self::Output {
         self.deque[self.cur_index] = input;
 
         if input < self.deque[self.min_index] {
@@ -81,7 +81,7 @@ impl Next<f64> for Minimum {
 }
 
 impl Reset for Minimum {
-    fn reset(&mut self) {
+    fn reset_rs(&mut self) {
         for i in 0..self.period {
             self.deque[i] = f64::INFINITY;
         }

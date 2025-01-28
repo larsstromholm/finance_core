@@ -31,52 +31,52 @@ impl Bar {
     }
 
     pub fn open(&self) -> f64 {
-        Open::open(self)
+        Open::open_rs(self)
     }
 
     pub fn high(&self) -> f64 {
-        High::high(self)
+        High::high_rs(self)
     }
 
     pub fn low(&self) -> f64 {
-        Low::low(self)
+        Low::low_rs(self)
     }
 
     pub fn close(&self) -> f64 {
-        Close::close(self)
+        Close::close_rs(self)
     }
 
     pub fn volume(&self) -> usize {
-        Volume::volume(self)
+        Volume::volume_rs(self)
     }
 }
 
 impl Open for Bar {
-    fn open(&self) -> f64 {
+    fn open_rs(&self) -> f64 {
         self.open
     }
 }
 
 impl High for Bar {
-    fn high(&self) -> f64 {
+    fn high_rs(&self) -> f64 {
         self.high
     }
 }
 
 impl Low for Bar {
-    fn low(&self) -> f64 {
+    fn low_rs(&self) -> f64 {
         self.low
     }
 }
 
 impl Close for Bar {
-    fn close(&self) -> f64 {
+    fn close_rs(&self) -> f64 {
         self.close
     }
 }
 
 impl Volume for Bar {
-    fn volume(&self) -> usize {
+    fn volume_rs(&self) -> usize {
         self.volume
     }
 }

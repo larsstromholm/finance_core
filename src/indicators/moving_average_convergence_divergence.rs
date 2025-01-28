@@ -29,23 +29,23 @@ impl MovingAverageConvergenceDivergence {
     }
 
     pub fn next(&mut self, input: f64) -> (f64, f64, f64) {
-        Next::next(self, input)
+        Next::next_rs(self, input)
     }
 
     pub fn reset(&mut self) {
-        Reset::reset(self)
+        Reset::reset_rs(self)
     }
 }
 
 impl Next<f64> for MovingAverageConvergenceDivergence {
     type Output = (f64, f64, f64);
 
-    fn next(&mut self, input: f64) -> Self::Output {
-        let long_val = self.long_ema.next(input);
-        let short_val = self.short_ema.next(input);
+    fn next_rs(&mut self, input: f64) -> Self::Output {
+        let long_val = self.long_ema.next_rs(input);
+        let short_val = self.short_ema.next_rs(input);
         
         let macd = short_val - long_val;
-        let signal = self.signal_ema.next(macd);
+        let signal = self.signal_ema.next_rs(macd);
         let histogram = macd - signal;
 
         (macd, signal, histogram)
@@ -56,10 +56,10 @@ impl Next<f64> for MovingAverageConvergenceDivergence {
 
 impl Reset for MovingAverageConvergenceDivergence {
 
-    fn reset(&mut self) {
-        self.long_ema.reset();
-        self.short_ema.reset();
-        self.signal_ema.reset();
+    fn reset_rs(&mut self) {
+        self.long_ema.reset_rs();
+        self.short_ema.reset_rs();
+        self.signal_ema.reset_rs();
     }
 
 }
