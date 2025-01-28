@@ -1,32 +1,32 @@
 pub trait Reset {
-    fn reset(&mut self);
+    fn reset_rs(&mut self);
 }
 
 pub trait Period {
-    fn period(&self) -> usize;
+    fn period_rs(&self) -> usize;
 }
 
 pub trait Next<T> {
     type Output;
-    fn next(&mut self, input: T) -> Self::Output;
+    fn next_rs(&mut self, input: T) -> Self::Output;
 }
 
 pub trait Open {
-    fn open(&self) -> f64;
+    fn open_rs(&self) -> f64;
 }
 
 pub trait High {
-    fn high(&self) -> f64;
+    fn high_rs(&self) -> f64;
 }
 
 pub trait Low {
-    fn low(&self) -> f64;
+    fn low_rs(&self) -> f64;
 }
 
 pub trait Close {
-    fn close(&self) -> f64;
+    fn close_rs(&self) -> f64;
 }
 
 pub trait Volume {
-    fn volume(&self) -> usize;
+    fn volume_rs(&self) -> usize;
 }

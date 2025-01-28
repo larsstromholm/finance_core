@@ -38,12 +38,13 @@ print(sma_three_days.next(5)) # >> 3.66
 
 ## Indicators
 
+- Averge true range (ATR)
 - Exponential moving average (EMA)
 - Maximum
 - Minimum
 - Moving average convergence/divergence (MACD)
 - Simple moving average (SMA)
-- True range
+- True range (TR)
 
 ## Data classes
 

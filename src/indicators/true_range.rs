@@ -20,28 +20,28 @@ impl TrueRange {
     }
 
     pub fn next(&mut self, input: &Bar) -> f64 {
-        Next::next(self, input)
+        Next::next_rs(self, input)
     } 
 
     pub fn reset(&mut self) {
-        Reset::reset(self)
+        Reset::reset_rs(self)
     }
 }
 
 impl<T: High + Low + Close> Next <&T> for TrueRange {
     type Output = f64;
 
-    fn next(&mut self, input: &T) -> Self::Output {
+    fn next_rs(&mut self, input: &T) -> Self::Output {
         let max_dist = match self.prev_close {
             Some(prev_close) => {
-                let dist1 = input.high() - input.low();
-                let dist2 = (input.high() - prev_close).abs();
-                let dist3 = (input.low() - prev_close).abs();
+                let dist1 = input.high_rs() - input.low_rs();
+                let dist2 = (input.high_rs() - prev_close).abs();
+                let dist3 = (input.low_rs() - prev_close).abs();
                 dist1.max(dist2).max(dist3)
             }
-            None => input.high() - input.low(),
+            None => input.high_rs() - input.low_rs(),
         };
-        self.prev_close = Some(input.close());
+        self.prev_close = Some(input.close_rs());
         max_dist
 
     }
@@ -50,7 +50,7 @@ impl<T: High + Low + Close> Next <&T> for TrueRange {
 
 impl Reset for TrueRange {
 
-    fn reset(&mut self) {
+    fn reset_rs(&mut self) {
         self.prev_close = None
     }
 

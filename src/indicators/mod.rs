@@ -1,3 +1,6 @@
+mod average_true_range;
+pub use self::average_true_range::AverageTrueRange;
+
 mod exponential_moving_average;
 pub use self::exponential_moving_average::ExponentialMovingAverage;
 

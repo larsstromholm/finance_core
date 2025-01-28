@@ -1,5 +1,6 @@
 __all__ = [
     "Bar",
+    "AverageTrueRange",
     "ExponentialMovingAverage",
     "Maximum",
     "Minimum",
@@ -19,6 +20,20 @@ class Bar:
             volume: int
     ) -> None:
         """Bar data item."""
+
+
+class AverageTrueRange:
+    def __init__(self, period: int) -> None:
+        """Average true range."""
+
+    def period(self) -> int:
+        """Return the period of the smoothing."""
+
+    def next(self, input: Bar) -> float:
+        """Calculate average true range for the next period."""
+
+    def reset(self) -> None:
+        """Reset the current calculations."""
 
 
 class ExponentialMovingAverage:

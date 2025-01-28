@@ -5,6 +5,7 @@ pub use crate::traits::*;
 
 mod indicators;
 pub use crate::indicators::{
+    AverageTrueRange,
     ExponentialMovingAverage, 
     Maximum, 
     Minimum, 
@@ -26,6 +27,7 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 #[pymodule]
 fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<Bar>()?;
+    m.add_class::<AverageTrueRange>()?;
     m.add_class::<ExponentialMovingAverage>()?;    
     m.add_class::<Maximum>()?;
     m.add_class::<Minimum>()?;
