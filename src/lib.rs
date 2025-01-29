@@ -9,8 +9,9 @@ pub use crate::indicators::{
     ExponentialMovingAverage, 
     Maximum, 
     Minimum, 
-    SimpleMovingAverage, 
     MovingAverageConvergenceDivergence,
+    RelativeStrengthIndex,
+    SimpleMovingAverage, 
     TrueRange
 };
 
@@ -32,6 +33,7 @@ fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<Maximum>()?;
     m.add_class::<Minimum>()?;
     m.add_class::<MovingAverageConvergenceDivergence>()?;
+    m.add_class::<RelativeStrengthIndex>()?;
     m.add_class::<SimpleMovingAverage>()?;
     m.add_class::<TrueRange>()?;
     m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;

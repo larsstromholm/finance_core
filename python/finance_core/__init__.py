@@ -5,6 +5,7 @@ from ._finance_core import (
     Maximum,
     Minimum,
     MovingAverageConvergenceDivergence,
+    RelativeStrengthIndex,
     SimpleMovingAverage,
     TrueRange,
 )
@@ -16,6 +17,7 @@ __all__ = [
     "Maximum",
     "Minimum",
     "MovingAverageConvergenceDivergence",
+    "RelativeStrengthIndex",
     "SimpleMovingAverage",
     "TrueRange"
 ]

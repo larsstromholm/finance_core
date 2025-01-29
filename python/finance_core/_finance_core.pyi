@@ -5,6 +5,7 @@ __all__ = [
     "Maximum",
     "Minimum",
     "MovingAverageConvergenceDivergence",
+    "RelativeStrengthIndex",
     "SimpleMovingAverage",
     "TrueRange"
 ]
@@ -90,6 +91,20 @@ class MovingAverageConvergenceDivergence:
 
     def reset(self) -> None:
         """Reset the current calculations."""
+
+
+class RelativeStrengthIndex:
+    def __init__(self, period: int) -> None:
+        """Relative strength index."""
+
+    def period(self) -> int:
+        """Return the number of periods."""
+
+    def next(self, input: float) -> float:
+        """Calculate the relative strength index of the current periods."""
+
+    def reset(self) -> None:
+        """Reset the calculations."""
 
 
 class SimpleMovingAverage:
