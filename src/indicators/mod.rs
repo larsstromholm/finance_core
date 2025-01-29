@@ -13,6 +13,9 @@ pub use self::minimum::Minimum;
 mod moving_average_convergence_divergence;
 pub use self::moving_average_convergence_divergence::MovingAverageConvergenceDivergence;
 
+mod relative_strength_index;
+pub use self::relative_strength_index::RelativeStrengthIndex;
+
 mod simple_moving_average;
 pub use self::simple_moving_average::SimpleMovingAverage;
 

@@ -43,6 +43,7 @@ print(sma_three_days.next(5)) # >> 3.66
 - Maximum
 - Minimum
 - Moving average convergence/divergence (MACD)
+- Relative strength index (RSI)
 - Simple moving average (SMA)
 - True range (TR)
 
