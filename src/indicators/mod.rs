@@ -16,6 +16,9 @@ pub use self::moving_average_convergence_divergence::MovingAverageConvergenceDiv
 mod relative_strength_index;
 pub use self::relative_strength_index::RelativeStrengthIndex;
 
+mod rate_of_change;
+pub use self::rate_of_change::RateOfChange;
+
 mod simple_moving_average;
 pub use self::simple_moving_average::SimpleMovingAverage;
 
