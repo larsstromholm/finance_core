@@ -5,6 +5,7 @@ __all__ = [
     "Maximum",
     "Minimum",
     "MovingAverageConvergenceDivergence",
+    "RateOfChange",
     "RelativeStrengthIndex",
     "SimpleMovingAverage",
     "TrueRange"
@@ -88,6 +89,20 @@ class MovingAverageConvergenceDivergence:
 
         Returns the MACD (0), signal (1), and histogram (2).
         """
+
+    def reset(self) -> None:
+        """Reset the current calculations."""
+
+
+class RateOfChange:
+    def __init__(self, period: int) -> None:
+        """Create a rate of change indicator."""
+
+    def period(self) -> int:
+        """Return the number of periods."""
+
+    def next(self, input: float) -> float:
+        """Calculate the rate of change of the current periods."""
 
     def reset(self) -> None:
         """Reset the current calculations."""
