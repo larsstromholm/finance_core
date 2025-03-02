@@ -19,6 +19,9 @@ pub use self::relative_strength_index::RelativeStrengthIndex;
 mod rate_of_change;
 pub use self::rate_of_change::RateOfChange;
 
+mod sharpe_ratio;
+pub use self::sharpe_ratio::SharpeRatio;
+
 mod simple_moving_average;
 pub use self::simple_moving_average::SimpleMovingAverage;
 

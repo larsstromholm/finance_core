@@ -7,6 +7,7 @@ from ._finance_core import (
     MovingAverageConvergenceDivergence,
     RateOfChange,
     RelativeStrengthIndex,
+    SharpeRatio,
     SimpleMovingAverage,
     StandardDeviation,
     TrueRange,
@@ -21,6 +22,7 @@ __all__ = [
     "MovingAverageConvergenceDivergence",
     "RateOfChange",
     "RelativeStrengthIndex",
+    "SharpeRatio",
     "SimpleMovingAverage",
     "StandardDeviation",
     "TrueRange"

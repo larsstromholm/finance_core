@@ -7,6 +7,7 @@ __all__ = [
     "MovingAverageConvergenceDivergence",
     "RateOfChange",
     "RelativeStrengthIndex",
+    "SharpeRatio",
     "SimpleMovingAverage",
     "StandardDeviation",
     "TrueRange"
@@ -121,6 +122,23 @@ class RelativeStrengthIndex:
 
     def reset(self) -> None:
         """Reset the calculations."""
+
+
+class SharpeRatio:
+    def __init__(self, period: int) -> None:
+        """Create a sharpe ratio indicator."""
+
+    def period(self) -> int:
+        """Return the number of periods."""
+
+    def next(self, input: float) -> float:
+        """Calculate the sharpe ratio of the current periods.
+
+        Input is the current rate of return.
+        """
+
+    def reset(self) -> None:
+        """Reset the current calculations."""
 
 
 class SimpleMovingAverage:

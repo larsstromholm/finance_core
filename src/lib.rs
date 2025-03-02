@@ -12,6 +12,7 @@ pub use crate::indicators::{
     MovingAverageConvergenceDivergence,
     RateOfChange,
     RelativeStrengthIndex,
+    SharpeRatio,
     SimpleMovingAverage, 
     StandardDeviation,
     TrueRange
@@ -37,6 +38,7 @@ fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<MovingAverageConvergenceDivergence>()?;
     m.add_class::<RateOfChange>()?;
     m.add_class::<RelativeStrengthIndex>()?;
+    m.add_class::<SharpeRatio>()?;
     m.add_class::<SimpleMovingAverage>()?;
     m.add_class::<StandardDeviation>()?;
     m.add_class::<TrueRange>()?;
