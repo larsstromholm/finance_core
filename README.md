@@ -46,6 +46,7 @@ print(sma_three_days.next(5)) # >> 3.66
 - Rate of change (ROC)
 - Relative strength index (RSI)
 - Simple moving average (SMA)
+- Standard Deviation, population (SD)
 - True range (TR)
 
 ## Data classes

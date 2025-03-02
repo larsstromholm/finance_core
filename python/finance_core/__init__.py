@@ -8,6 +8,7 @@ from ._finance_core import (
     RateOfChange,
     RelativeStrengthIndex,
     SimpleMovingAverage,
+    StandardDeviation,
     TrueRange,
 )
 
@@ -21,5 +22,6 @@ __all__ = [
     "RateOfChange",
     "RelativeStrengthIndex",
     "SimpleMovingAverage",
+    "StandardDeviation",
     "TrueRange"
 ]
