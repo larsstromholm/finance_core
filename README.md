@@ -45,8 +45,9 @@ print(sma_three_days.next(5)) # >> 3.66
 - Moving average convergence/divergence (MACD)
 - Rate of change (ROC)
 - Relative strength index (RSI)
+- Sharpe ratio (SR)
 - Simple moving average (SMA)
-- Standard Deviation, population (SD)
+- Standard deviation, population (SD)
 - True range (TR)
 
 ## Data classes
