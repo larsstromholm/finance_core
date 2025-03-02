@@ -3,16 +3,17 @@ use pyo3::{exceptions::PyValueError, prelude::*};
 use crate::traits::{Next, Period, Reset};
 
 #[pyclass]
-pub struct SimpleMovingAverage {
+pub struct StandardDeviation {
     period: usize,
     index: usize,
     count: usize,
     sum: f64,
+    sum_sq: f64,
     deque: Vec<f64>,
 }
 
 #[pymethods]
-impl SimpleMovingAverage {
+impl StandardDeviation {
     #[new]
     pub fn new(period: usize) -> PyResult<Self> {
         match period {
@@ -22,8 +23,9 @@ impl SimpleMovingAverage {
                 index: 0,
                 count: 0,
                 sum: 0.0,
+                sum_sq: 0.0,
                 deque: vec![0.0; period],
-            })
+           })
         }
     }
 
@@ -38,15 +40,16 @@ impl SimpleMovingAverage {
     pub fn reset(&mut self) {
         Reset::reset_rs(self)
     }
+
 }
 
-impl Period for SimpleMovingAverage {
+impl Period for StandardDeviation {
     fn period_rs(&self) -> usize {
         self.period
     }
 }
 
-impl Next<f64> for SimpleMovingAverage {
+impl Next<f64> for StandardDeviation {
     type Output = f64;
 
     fn next_rs(&mut self, input: f64) -> Self::Output {
@@ -62,17 +65,23 @@ impl Next<f64> for SimpleMovingAverage {
         if self.count < self.period {
             self.count += 1
         };
-
+        
         self.sum += input - old_value;
-        self.sum / self.count as f64
+        self.sum_sq += input.powf(2.0) -  old_value.powf(2.0);
+
+        // Calculate mean and standard deviation
+        let mean = self.sum / self.count as f64;
+        let variance = (self.sum_sq / self.count as f64) - (mean * mean);
+        variance.sqrt() // Standard deviation
     }
 }
 
-impl Reset for SimpleMovingAverage {
+impl Reset for StandardDeviation {
     fn reset_rs(&mut self) {
         self.index = 0;
         self.count = 0;
         self.sum = 0.0;
+        self.sum_sq = 0.0;
         for i in 0..self.period {
             self.deque[i] = 0.0;
         }

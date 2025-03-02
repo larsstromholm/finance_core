@@ -13,6 +13,7 @@ pub use crate::indicators::{
     RateOfChange,
     RelativeStrengthIndex,
     SimpleMovingAverage, 
+    StandardDeviation,
     TrueRange
 };
 
@@ -37,6 +38,7 @@ fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<RateOfChange>()?;
     m.add_class::<RelativeStrengthIndex>()?;
     m.add_class::<SimpleMovingAverage>()?;
+    m.add_class::<StandardDeviation>()?;
     m.add_class::<TrueRange>()?;
     m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
     Ok(())

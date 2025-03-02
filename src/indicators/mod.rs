@@ -22,5 +22,8 @@ pub use self::rate_of_change::RateOfChange;
 mod simple_moving_average;
 pub use self::simple_moving_average::SimpleMovingAverage;
 
+mod standard_deviation;
+pub use self::standard_deviation::StandardDeviation;
+
 mod true_range;
 pub use self::true_range::TrueRange;

@@ -8,6 +8,7 @@ __all__ = [
     "RateOfChange",
     "RelativeStrengthIndex",
     "SimpleMovingAverage",
+    "StandardDeviation",
     "TrueRange"
 ]
 
@@ -131,6 +132,20 @@ class SimpleMovingAverage:
 
     def next(self, input: float) -> float:
         """Calculate the simple moving average of the current periods."""
+
+    def reset(self) -> None:
+        """Reset the current calculations."""
+
+
+class StandardDeviation:
+    def __init__(self, period: int) -> None:
+        """Create a standard deviation indicator."""
+
+    def period(self) -> int:
+        """Return the number of periods."""
+
+    def next(self, input: float) -> float:
+        """Calculate the standard deviation of the current periods."""
 
     def reset(self) -> None:
         """Reset the current calculations."""
