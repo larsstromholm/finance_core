@@ -125,7 +125,7 @@ class RelativeStrengthIndex:
 
 
 class SharpeRatio:
-    def __init__(self, period: int) -> None:
+    def __init__(self, period: int, rf: float) -> None:
         """Create a sharpe ratio indicator."""
 
     def period(self) -> int:
