@@ -1,5 +1,6 @@
 from ._finance_core import (
     Bar,
+    Signal,
     AverageTrueRange,
     ExponentialMovingAverage,
     Maximum,
@@ -11,10 +12,12 @@ from ._finance_core import (
     SimpleMovingAverage,
     StandardDeviation,
     TrueRange,
-)
+    SimpleMovingAverageCrossover,
+)  
 
 __all__ = [
     "Bar",
+    "Signal"
     "AverageTrueRange",
     "ExponentialMovingAverage",
     "Maximum",
@@ -25,5 +28,6 @@ __all__ = [
     "SharpeRatio",
     "SimpleMovingAverage",
     "StandardDeviation",
-    "TrueRange"
+    "TrueRange",
+    "SimpleMovingAverageCrossover",
 ]
