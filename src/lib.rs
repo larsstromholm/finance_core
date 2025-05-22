@@ -19,7 +19,10 @@ pub use crate::indicators::{
 };
 
 mod strategies;
-pub use crate::strategies::SimpleMovingAverageCrossover;
+pub use crate::strategies::{
+    ExponentialMovingAverageCrossover,
+    SimpleMovingAverageCrossover
+};
 
 mod bar;
 pub use crate::bar::Bar;
@@ -48,6 +51,7 @@ fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<TrueRange>()?;
 
     // strategies
+    m.add_class::<ExponentialMovingAverageCrossover>()?;
     m.add_class::<SimpleMovingAverageCrossover>()?;
     Ok(())
 }
