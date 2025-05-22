@@ -50,9 +50,15 @@ print(sma_three_days.next(5)) # >> 3.66
 - Standard deviation, population (SD)
 - True range (TR)
 
+## Strategies
+
+- Exponential moving average crossover
+- Simple moving average crossover
+
 ## Data classes
 
 - Bar (open, high, low, close, volume)
+- Signal (BUY, SELL, HOLD)
 
 ## Contribute
 

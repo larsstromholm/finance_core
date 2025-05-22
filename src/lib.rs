@@ -18,19 +18,26 @@ pub use crate::indicators::{
     TrueRange
 };
 
+mod strategies;
+pub use crate::strategies::{
+    ExponentialMovingAverageCrossover,
+    SimpleMovingAverageCrossover
+};
+
 mod bar;
 pub use crate::bar::Bar;
 
-/// Formats the sum of two numbers as string.
-#[pyfunction]
-fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
-    Ok((a + b).to_string())
-}
+mod signal;
+pub use crate::signal::Signal;
 
 /// A Python module implemented in Rust.
 #[pymodule]
 fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    // models
     m.add_class::<Bar>()?;
+    m.add_class::<Signal>()?;
+    
+    // indicators
     m.add_class::<AverageTrueRange>()?;
     m.add_class::<ExponentialMovingAverage>()?;    
     m.add_class::<Maximum>()?;
@@ -42,6 +49,9 @@ fn _finance_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<SimpleMovingAverage>()?;
     m.add_class::<StandardDeviation>()?;
     m.add_class::<TrueRange>()?;
-    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
+
+    // strategies
+    m.add_class::<ExponentialMovingAverageCrossover>()?;
+    m.add_class::<SimpleMovingAverageCrossover>()?;
     Ok(())
 }

@@ -1,5 +1,8 @@
+from enum import StrEnum
+
 __all__ = [
     "Bar",
+    "Signal",
     "AverageTrueRange",
     "ExponentialMovingAverage",
     "Maximum",
@@ -10,10 +13,13 @@ __all__ = [
     "SharpeRatio",
     "SimpleMovingAverage",
     "StandardDeviation",
-    "TrueRange"
+    "TrueRange",
+    "ExponentialMovingAverageCrossover",
+    "SimpleMovingAverageCrossover",
 ]
 
 
+# Models
 class Bar:
     def __init__(
             self,
@@ -26,6 +32,13 @@ class Bar:
         """Bar data item."""
 
 
+class Signal(StrEnum):
+    BUY = "Buy"
+    SELL = "Sell"
+    HOLD = "Hold"
+
+
+# Indicators
 class AverageTrueRange:
     def __init__(self, period: int) -> None:
         """Average true range."""
@@ -178,3 +191,26 @@ class TrueRange:
 
     def reset(self) -> None:
         """Reset the current true range."""
+
+
+# Strategies
+class ExponentialMovingAverageCrossover:
+    def __init__(self, short_period: int, long_period: int) -> None:
+        """Create a exponential moving average crossover strategy."""
+
+    def next(self, input: float) -> Signal:
+        """Calculate the next signal."""
+
+    def reset(self) -> None:
+        """Reset the current exponential moving average strategy."""
+
+
+class SimpleMovingAverageCrossover:
+    def __init__(self, short_period: int, long_period: int) -> None:
+        """Create a simple moving average crossover strategy."""
+
+    def next(self, input: float) -> Signal:
+        """Calculate the next signal."""
+
+    def reset(self) -> None:
+        """Reset the current simple moving average strategy."""
