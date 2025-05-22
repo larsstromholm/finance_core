@@ -14,8 +14,10 @@ __all__ = [
     "SimpleMovingAverage",
     "StandardDeviation",
     "TrueRange",
+    "ExponentialMovingAverageCrossover",
     "SimpleMovingAverageCrossover",
 ]
+
 
 # Models
 class Bar:
@@ -192,6 +194,17 @@ class TrueRange:
 
 
 # Strategies
+class ExponentialMovingAverageCrossover:
+    def __init__(self, short_period: int, long_period: int) -> None:
+        """Create a exponential moving average crossover strategy."""
+
+    def next(self, input: float) -> Signal:
+        """Calculate the next signal."""
+
+    def reset(self) -> None:
+        """Reset the current exponential moving average strategy."""
+
+
 class SimpleMovingAverageCrossover:
     def __init__(self, short_period: int, long_period: int) -> None:
         """Create a simple moving average crossover strategy."""
